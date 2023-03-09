@@ -1,10 +1,11 @@
 import pickle
 import updater
 import interface
+import notification
 
 AppsToUpdates = updater.AppsToUpdates
 
-def popup():
+def main():
     print(f"""
     Theres a new update for:
         *Windows 10 - {AppsToUpdates["Windows 10"]}
@@ -12,11 +13,5 @@ def popup():
         *Chrome - {AppsToUpdates["Chrome"]}
         
     """)
-    pass
-
-def main():
-    
-    popup()
-
 
 main()

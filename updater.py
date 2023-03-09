@@ -1,14 +1,20 @@
 import requests
 from bs4 import BeautifulSoup
+import time
+import croniter
+
+cron = croniter.croniter('*/30 * * * *', time.time())
 
 def windows_update():
     id = 0
     url = 'https://support.microsoft.com/en-us/topic/windows-10-update-history-8127c2c6-6edf-4fdf-8b9f-0f7be1ef3562'
+    
     response = requests.get(url)
 
     soup = BeautifulSoup(response.content, 'html.parser')
 
-    windows_update= soup.find('a', {'data-bi-slot': '3'}).text
+    current_version = soup.find('a', {'data-bi-slot': '3'}).text
+    print("Current version:", current_version)
 
     return windows_update, url
 
@@ -32,8 +38,4 @@ AppsToUpdates = {
     "Windows 10": "{}".format(windows_update()),
     "VS-Code": "https://code.visualstudio.com{}".format(vs_code_update()),
     "Chrome": "https://chromereleases.googleblog.com/2021/02/stable-channel-update-for-desktop_23.html",
-}
-url_values = {
-    "0": windows_update()[1],
-    "1": vs_code_update()[1]
 }
