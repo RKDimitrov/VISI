@@ -9,7 +9,7 @@ def windows_update():
     # Parse the HTML content using BeautifulSoup
     soup = BeautifulSoup(response.content, 'html.parser')
 
-    windows_update= soup.find('h1', id='page-header').text
+    windows_update= soup.find('a', {'data-bi-slot': '3'}).text
 
     return windows_update
 
@@ -30,11 +30,3 @@ AppsToUpdates = {
     #"VS-Code": "{}".format(vs_code_update()),
     "Chrome": "https://chromereleases.googleblog.com/2021/02/stable-channel-update-for-desktop_23.html",
 }
-
-
-# Find the link for the latest update
-
-
-
-# Print the link
-print(windows_update)

@@ -1,5 +1,6 @@
 import pickle
 import updater
+import interface
 
 AppsToUpdates = updater.AppsToUpdates
 

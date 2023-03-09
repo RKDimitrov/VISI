@@ -1,9 +1,11 @@
 import tkinter as tk
 from tkinter import ttk
+import updater
 
+AppsToUpdates = updater.AppsToUpdates
 
 forUpdate = {
-    "windows": "mqu1",
+    "Windows 10 Update": "{}".format(AppsToUpdates["Windows 10"]),
     "linux": "mqu2",
     "mac": "mqu3",
     "android": "mqu4",
