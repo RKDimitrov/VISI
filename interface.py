@@ -6,9 +6,7 @@ delition = 0
 AppsToUpdates = updater.AppsToUpdates
 forUpdate = {
     "Windows 10 Update": "{}".format(AppsToUpdates["Windows 10"]),
-    "linux": "mqu2",
-    "mac": "mqu3",
-    "android": "mqu4",
+    "VS Code Update": "{}".format(AppsToUpdates["VS-Code"]),
 }
 def overAllFunction():
     class MyGUI:
@@ -77,7 +75,9 @@ def overAllFunction():
             #create button to website
             if hasattr(self, 'button'):
                 self.button.pack_forget()
-            self.button = tk.Button(self.content_box, text='Go to website', command=lambda: self.open_website(updater.windows_update()[1]))
+
+
+            self.button = tk.Button(self.content_box, text='Go to website', command=lambda: self.open_website(updater.url_values[str(selected_option)]))
             self.button.pack(padx=10, pady=10)
             
             
