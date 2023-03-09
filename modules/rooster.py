@@ -55,7 +55,7 @@ class App:
             self.is_idle = True
 
     def callback(self, event):
-        #subprocess.run(["python", "notification.py"])
+        subprocess.run(["python", "notification.py"])
         self.master.destroy()
 
 root = tk.Tk()
