@@ -31,7 +31,8 @@ class MyGUI:
         for key, value in forUpdate.items():
             self.menu.insert('', 'end', text=key, values=value)
         
-        
+        #selected option to content box
+        self.menu.bind('<<TreeviewSelect>>', self.update_content)
 
         # Create right content box
         self.content_box = tk.Frame(self.master, bg='#ECECEC', padx=20, pady=20)
@@ -49,6 +50,17 @@ class MyGUI:
         style.configure('Custom.Treeview', background='#1B1B1B', fieldbackground='#1B1B1B', foreground='#ECECEC', rowheight=70, font=('Segoe UI', 14))
         style.map('Custom.Treeview', background=[('selected', '#0078D7')], foreground=[('selected', '#ECECEC')])
 
+
+    def update_content(self, event):
+        # Get selected item
+        selected_item = self.menu.selection()[0]
+        # Get selected item text
+        selected_text = self.menu.item(selected_item, 'text')
+        # Get selected item value
+        selected_value = self.menu.item(selected_item, 'values')[0]
+        # Update content box
+        self.title_label.config(text=selected_text)
+        self.subtitle_label.config(text=selected_value)
         
 
 if __name__ == '__main__':
