@@ -15,8 +15,6 @@ class App:
         # Load the images for the animation and make them transparent
         self.images = []
         for i in range(2):
-            parent_folder = os.path.dirname(os.path.abspath(__file__))
-            image_path = os.path.join(parent_folder, "rabbit.png")
             image = Image.open(f"../img/rooster_{i}.png")
             image = image.resize((int(image.size[0]/10), int(image.size[1]/10)))
             image = image.convert("RGBA")
