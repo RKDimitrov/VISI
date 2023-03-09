@@ -1,3 +1,4 @@
+import customtkinter
 import tkinter as tk
 from tkinter import ttk
 import updater
@@ -18,19 +19,19 @@ def overAllFunction():
 
         def create_widgets(self):
             # Create left frame with scrollbar
-            self.left_frame = tk.Frame(self.master, bg='#1B1B1B')
+            self.left_frame = customtkinter.CTkFrame(self.master)
             self.left_frame.pack(side='left', fill='both', expand=False, padx=10, pady=10)
-            self.scrollbar = tk.Scrollbar(self.left_frame)
+            self.scrollbar = customtkinter.CTkScrollbar(self.left_frame)
             self.scrollbar.pack(side='right', fill='y')
             self.menu = ttk.Treeview(self.left_frame, yscrollcommand=self.scrollbar.set, style='Custom.Treeview')
             self.menu.pack(side='left', fill='both', expand=False)
-            self.scrollbar.config(command=self.menu.yview)
-            
-            self.menu.heading('#0', text='', anchor='w')    
+            self.scrollbar.configure(command=self.menu.yview)
+
+            self.menu.heading('#0', text='MENU', anchor='center')    
 
             #creating content box
-            self.content_box = tk.Frame(self.master, bg='#ECECEC', padx=20, pady=20)
-            self.content_box.pack(side='right', fill='both', expand=True)
+            self.content_box = customtkinter.CTkFrame(self.master)
+            self.content_box.pack(padx=20, pady=20, fill='both', expand=True)
             
 
             #mapping dictionary to treeview
@@ -41,21 +42,18 @@ def overAllFunction():
             #selected option to content box
             self.menu.bind('<<TreeviewSelect>>', self.update_content)
 
-            # Create right content box
-            self.content_box = tk.Frame(self.master, bg='#ECECEC', padx=20, pady=20)
-            self.content_box.pack(side='right', fill='both', expand=True)
 
             # Add widgets to content box
-            self.title_label = tk.Label(self.content_box, text='Welcome to VISI', font=('Segoe UI', 20, 'bold'), bg='#ECECEC', fg='#1B1B1B', anchor='center')
+            self.title_label = customtkinter.CTkLabel(self.content_box, text='Welcome to my GUI', font=('Segoe UI', 20, 'bold'), anchor='center')
             self.title_label.pack(padx=10, pady=10)
-            self.subtitle_label = tk.Label(self.content_box, text='Select an option from the menu on the left to get started.', font=('Segoe UI', 14), bg='#ECECEC', fg='#1B1B1B', wraplength=500, anchor='center')
+            self.subtitle_label = customtkinter.CTkLabel(self.content_box, text='Select an option from the menu on the left to get started.', font=('Segoe UI', 14), wraplength=500, anchor='center')
             self.subtitle_label.pack(padx=10, pady=10)
             
             # Define custom style for Treeview
             style = ttk.Style()
             style.theme_use('clam')
-            style.configure('Custom.Treeview', background='#1B1B1B', fieldbackground='#1B1B1B', foreground='#ECECEC', rowheight=70, font=('Segoe UI', 14))
-            style.map('Custom.Treeview', background=[('selected', '#0078D7')], foreground=[('selected', '#ECECEC')])
+            style.configure('Custom.Treeview', background='#5c5c5c', fieldbackground='#8a8a8a', foreground='#ffffff', rowheight=70, font=('Segoe UI', 14))
+            style.map('Custom.Treeview', background=[('selected', '#7d7d7d')], foreground=[('selected', '#383838')], font=[('selected', ('Segoe UI', 14, 'bold'))])
 
         def update_content(self, event):
             
@@ -83,7 +81,8 @@ def overAllFunction():
             webbrowser.open(url)
 
     if __name__ == '__main__':
-        root = tk.Tk()
+        customtkinter.set_appearance_mode("dark")
+        root = customtkinter.CTk()
         app = MyGUI(root)
         root.mainloop()
 
