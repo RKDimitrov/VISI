@@ -70,14 +70,18 @@ def overAllFunction():
             # Update content box
             self.title_label.config(text=selected_text)
             self.subtitle_label.config(text=selected_value)
+            
+
+            
+
             #create button to website
+            if hasattr(self, 'button'):
+                self.button.pack_forget()
             self.button = tk.Button(self.content_box, text='Go to website', command=lambda: self.open_website(updater.windows_update()[1]))
             self.button.pack(padx=10, pady=10)
-            #delete button
-            if delition > 0:
-                self.button.destroy()
-            delition+=1
-            print(delition)
+            
+            
+            
             
     
 
