@@ -5,8 +5,6 @@ from updater import AppsToUpdates
 AppsToUpdates=AppsToUpdates['Windows 10']
 
 notification.notify(
-    title='Notification Title',
-    message='Notification Message',
     title='Windows Update',
     message=AppsToUpdates,
     app_name='My App',
