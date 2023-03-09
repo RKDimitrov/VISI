@@ -1,30 +1,39 @@
 import tkinter as tk
-import os
+import webbrowser
+from PIL import Image, ImageTk
+
+class App:
+    def __init__(self, master):
+        self.master = master
+        self.master.geometry("+{}+{}".format(self.master.winfo_screenwidth(), self.master.winfo_screenheight()))
+        self.master.overrideredirect(True)
+        self.master.lift()
+        self.master.wm_attributes("-topmost", True)
+        self.master.bind("<Button-1>", self.callback)
+
+        self.image = tk.PhotoImage(file="rabbit.png")
+        self.image = self.image.subsample(10)
+
+        self.label = tk.Label(self.master, image=self.image, bd=0)
+        self.label.pack()
+
+        self.master.after(1000, self.slide_in)
+
+    def slide_in(self):
+        self.master.geometry("{}x{}+{}+{}".format(self.image.width(), self.image.height(),
+                                                   self.master.winfo_screenwidth(), self.master.winfo_screenheight() - self.image.height()))
+        self.master.after(10, self.animate_slide)
+
+    def animate_slide(self):
+        if self.master.winfo_x() > self.master.winfo_screenwidth() - self.image.width() - 10:
+            self.master.geometry("{}x{}+{}+{}".format(self.image.width(), self.image.height(),
+                                                       self.master.winfo_x() - 10, self.master.winfo_y()))
+            self.master.after(10, self.animate_slide)
+
+    def callback(self, event):
+        webbrowser.open("http://www.example.com")
+        self.master.destroy()
 
 root = tk.Tk()
-root.overrideredirect(True)  # Remove the title bar and window decorations
-root.geometry("300x300+0+0")  # Set the size and position of the window
-root.lift()  # Move the window to the top of the stacking order
-root.wm_attributes("-topmost", True)  # Keep the window on top of other windows
-
-# Load an image and display it in a label
-image = tk.PhotoImage(file="rabbit.png")
-label = tk.Label(root, image=image, bd=0)
-label.pack()
-
-# Open the URL when the user clicks on the image
-def on_click(event):
-    os.system("start " + "chrome.exe")
-    root.destroy()
-
-label.bind("<Button-1>", on_click)
-
-x = root.winfo_screenwidth() - root.winfo_reqwidth()  # Starting x position
-y = root.winfo_screenheight() - root.winfo_reqheight()  # Starting y position
-root.geometry("+{}+{}".format(x, y))  # Set the new position of the window
-for i in range(x, root.winfo_screenwidth() - root.winfo_reqwidth(), -10):
-    root.geometry("+{}+{}".format(i, y))
-    root.update()
-    root.after(10)
-
+app = App(root)
 root.mainloop()
