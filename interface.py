@@ -67,8 +67,8 @@ def overAllFunction():
             # Get selected item index
             selected_index = int(selected_item[0][1:])
             # Update content box
-            self.title_label.config(text=selected_text)
-            self.subtitle_label.config(text=selected_value)
+            self.title_label.configure(text=selected_text)
+            self.subtitle_label.configure(text=selected_value)
             #create button to website
             if hasattr(self, 'button'):
                 self.button.pack_forget()
