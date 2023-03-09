@@ -9,25 +9,26 @@ forUpdate = {
     "linux": "mqu2",
     "mac": "mqu3",
     "android": "mqu4",
-    
 }
 
 class MyGUI:
     def __init__(self, master):
         self.master = master
         self.master.geometry('800x600')
-        self.master.title('My Awesome GUI')
+        self.master.title('VISI Security')
         self.create_widgets()
 
     def create_widgets(self):
         # Create left frame with scrollbar
-        self.left_frame = tk.Frame(self.master, bg='#1B1B1B', activebackground='#1B1B1B', padx=10, pady=10)
-        self.left_frame.pack(side='left', fill='both', expand=True, padx=10, pady=10)
+        self.left_frame = tk.Frame(self.master, bg='#1B1B1B')
+        self.left_frame.pack(side='left', fill='both', expand=False, padx=10, pady=10)
         self.scrollbar = tk.Scrollbar(self.left_frame)
         self.scrollbar.pack(side='right', fill='y')
         self.menu = ttk.Treeview(self.left_frame, yscrollcommand=self.scrollbar.set, style='Custom.Treeview')
-        self.menu.pack(side='left', fill='both', expand=True)
+        self.menu.pack(side='left', fill='both', expand=False)
         self.scrollbar.config(command=self.menu.yview)
+        
+        self.menu.heading('#0', text='', anchor='w')    
 
         #creating content box
         self.content_box = tk.Frame(self.master, bg='#ECECEC', padx=20, pady=20)
@@ -37,6 +38,7 @@ class MyGUI:
         #mapping dictionary to treeview
         for key, value in forUpdate.items():
             self.menu.insert('', 'end', text=key, values=value)
+            
         
 
         # Create right content box
