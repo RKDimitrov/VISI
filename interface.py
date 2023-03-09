@@ -81,11 +81,6 @@ def overAllFunction():
             self.button.pack(padx=10, pady=10)
             
             
-            
-            
-    
-
-            
         def open_website(self, url):
             import webbrowser
             webbrowser.open(url)
