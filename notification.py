@@ -1,29 +1,16 @@
-from plyer import notification
-from threading import Thread
-import time
+from winotify import Notification
 import interface
+import os, sys
 
-def on_notification_click():
-    interface.overAllFunction()
+def on_notification_clicked(notification):
     print("Notification clicked!")
 
-def notification_listener():
-    while True:
-        # check if a notification has been clicked
-        if notification.is_sticky():
-            on_notification_click()
-        time.sleep(1)
-
-AppsToUpdates = {'Windows 10': 'Update available!'}
-notification.notify(
-    title='Windows Update',
-    message=AppsToUpdates['Windows 10'],
-    app_name='My App',
-    timeout=5000,  # 5 seconds
-    app_icon=None,  # set to None to use the default icon
-    toast=False,  # set to False to use non-toast notification on Windows 10
-    ticker='',  # set to an empty string to hide ticker on Android
+notification = Notification(
+    app_id="my_app_id",
+    title="Notification Title",
+    msg="Notification Message"
 )
 
-listener_thread = Thread(target=notification_listener)
-listener_thread.start()
+notification.add_actions(label="ghj", launch=f"{os.getcwd()}\interface.py")
+
+notification.show()
