@@ -1,34 +1,30 @@
+import tkinter as tk
 import os
-from tkinter import Tk, Canvas, Button
-from PIL import ImageTk, Image
 
-def overlay_image(image_path, app_name):
-    # load the image to overlay
-    image = Image.open(image_path)
+root = tk.Tk()
+root.overrideredirect(True)  # Remove the title bar and window decorations
+root.geometry("300x300+0+0")  # Set the size and position of the window
+root.lift()  # Move the window to the top of the stacking order
+root.wm_attributes("-topmost", True)  # Keep the window on top of other windows
 
-    # create a Tkinter window to display the image
-    root = Tk()
-    root.overrideredirect(True)
-    root.geometry("+0+0")
-    root.lift()
-    root.wm_attributes("-topmost", True)
-    root.wm_attributes("-disabled", True)
-    canvas = Canvas(root, width=image.width, height=image.height, highlightthickness=0)
-    canvas.pack()
-    img = ImageTk.PhotoImage(image)
-    canvas.create_image(0, 0, anchor="nw", image=img)
+# Load an image and display it in a label
+image = tk.PhotoImage(file="rabbit.png")
+label = tk.Label(root, image=image, bd=0)
+label.pack()
 
-    canvas.bind("<Button-1>", lambda event: on_click(root, app_name))
-
-    button = Button(root, text="Click to Continue", bg="white", fg="black", bd=0)
-    button.pack(side="right", padx=500)
-    button.config(width=5, height=5)
-    # run the Tkinter main loop to display the image and button
-    root.mainloop()
-
-def on_click(root, app_name):
-    # destroy the root window
-    os.system("start " + app_name)
+# Open the URL when the user clicks on the image
+def on_click(event):
+    os.system("start " + "chrome.exe")
     root.destroy()
 
-overlay_image("rabbit.png", "chrome.exe")
+label.bind("<Button-1>", on_click)
+
+x = root.winfo_screenwidth() - root.winfo_reqwidth()  # Starting x position
+y = root.winfo_screenheight() - root.winfo_reqheight()  # Starting y position
+root.geometry("+{}+{}".format(x, y))  # Set the new position of the window
+for i in range(x, root.winfo_screenwidth() - root.winfo_reqwidth(), -10):
+    root.geometry("+{}+{}".format(i, y))
+    root.update()
+    root.after(10)
+
+root.mainloop()
