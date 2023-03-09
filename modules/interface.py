@@ -1,5 +1,4 @@
 import customtkinter
-import tkinter as tk
 from tkinter import ttk
 import updater
 
@@ -21,13 +20,14 @@ def overAllFunction():
             # Create left frame with scrollbar
             self.left_frame = customtkinter.CTkFrame(self.master)
             self.left_frame.pack(side='left', fill='both', expand=False, padx=10, pady=10)
+            self.left_frame.setLinewidth(0)
+
             self.scrollbar = customtkinter.CTkScrollbar(self.left_frame)
             self.scrollbar.pack(side='right', fill='y')
             self.menu = ttk.Treeview(self.left_frame, yscrollcommand=self.scrollbar.set, style='Custom.Treeview')
             self.menu.pack(side='left', fill='both', expand=False)
             self.scrollbar.configure(command=self.menu.yview)
-
-            self.menu.heading('#0', text='MENU', anchor='center')    
+            self.menu.heading('#0', text='MENU', anchor='center')
 
             #creating content box
             self.content_box = customtkinter.CTkFrame(self.master)
@@ -44,16 +44,19 @@ def overAllFunction():
 
 
             # Add widgets to content box
-            self.title_label = customtkinter.CTkLabel(self.content_box, text='Welcome to my GUI', font=('Segoe UI', 20, 'bold'), anchor='center')
-            self.title_label.pack(padx=10, pady=10)
+            self.title_label = customtkinter.CTkLabel(self.content_box, text='Welcome to VISI', font=('Segoe UI', 20, 'bold'), anchor='center')
+            self.title_label.pack(padx=10, pady=30)
             self.subtitle_label = customtkinter.CTkLabel(self.content_box, text='Select an option from the menu on the left to get started.', font=('Segoe UI', 14), wraplength=500, anchor='center')
             self.subtitle_label.pack(padx=10, pady=10)
             
-            # Define custom style for Treeview
+            # Styling
             style = ttk.Style()
             style.theme_use('clam')
-            style.configure('Custom.Treeview', background='#5c5c5c', fieldbackground='#8a8a8a', foreground='#ffffff', rowheight=70, font=('Segoe UI', 14))
-            style.map('Custom.Treeview', background=[('selected', '#7d7d7d')], foreground=[('selected', '#383838')], font=[('selected', ('Segoe UI', 14, 'bold'))])
+            style.configure('Custom.Treeview.Heading', background='#2b2b2b', foreground='#ffffff', font=('Segoe UI', 14, 'bold'))
+            style.configure('Custom.Treeview', background='#2d2d2d', fieldbackground='#2d2d2d', foreground='#ffffff', rowheight=70, font=('Segoe UI', 14))
+            style.map('Custom.Treeview', background=[('selected', '#878787')], foreground=[('selected', '#2b2b2b')], font=[('selected', ('Segoe UI', 14, 'bold'))])
+
+            
 
         def update_content(self, event):
             
@@ -72,7 +75,7 @@ def overAllFunction():
             #create button to website
             if hasattr(self, 'button'):
                 self.button.pack_forget()
-            self.button = tk.Button(self.content_box, text='Go to website', command=lambda: self.open_website(updater.url_values[str(selected_index)]))
+            self.button = ttk.Button(self.content_box, text='Go to website', command=lambda: self.open_website(updater.url_values[str(selected_index)]))
             self.button.pack(padx=10, pady=10)
             
             
