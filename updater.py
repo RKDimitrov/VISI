@@ -29,7 +29,7 @@ def vs_code_update():
     href_value = a_active.get('href')
 
 
-    return href_value
+    return href_value, url
 
 
 AppsToUpdates = {
@@ -38,3 +38,7 @@ AppsToUpdates = {
     "Chrome": "https://chromereleases.googleblog.com/2021/02/stable-channel-update-for-desktop_23.html",
 }
 
+url_values = {
+    "1": windows_update()[1],
+    "2": vs_code_update()[1]
+}
