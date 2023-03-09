@@ -1,5 +1,5 @@
 from plyer import notification
-import updater
+
 from updater import AppsToUpdates
 
 AppsToUpdates=AppsToUpdates['Windows 10']
