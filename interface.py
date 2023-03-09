@@ -1,6 +1,16 @@
 import tkinter as tk
 from tkinter import ttk
+import updater
 
+AppsToUpdates = updater.AppsToUpdates
+
+forUpdate = {
+    "Windows 10 Update": "{}".format(AppsToUpdates["Windows 10"]),
+    "linux": "mqu2",
+    "mac": "mqu3",
+    "android": "mqu4",
+    
+}
 
 class MyGUI:
     def __init__(self, master):
@@ -19,20 +29,14 @@ class MyGUI:
         self.menu.pack(side='left', fill='both', expand=True)
         self.scrollbar.config(command=self.menu.yview)
 
-        # Add menu options
-        self.menu.insert("", "end", "item1", text="Option 1")
-        self.menu.insert("", "end", "item2", text="Option 2")
-        self.menu.insert("", "end", "item3", text="Option 3")
-        self.menu.insert("", "end", "item4", text="Option 4")
-        self.menu.insert("", "end", "item5", text="Option 5")
-        self.menu.insert("", "end", "item6", text="Option 6")
-        self.menu.insert("", "end", "item7", text="Option 7")
-        self.menu.insert("", "end", "item8", text="Option 8")
-        self.menu.insert("", "end", "item9", text="Option 9")
-        self.menu.insert("", "end", "item10", text="Option 10")
-        self.menu.insert("", "end", "item11", text="Option 11")
-        self.menu.insert("", "end", "item12", text="Option 12")
-        self.menu.insert("", "end", "item13", text="Option 13")
+        #creating content box
+        self.content_box = tk.Frame(self.master, bg='#ECECEC', padx=20, pady=20)
+        self.content_box.pack(side='right', fill='both', expand=True)
+        
+
+        #mapping dictionary to treeview
+        for key, value in forUpdate.items():
+            self.menu.insert('', 'end', text=key, values=value)
         
 
         # Create right content box
