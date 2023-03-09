@@ -15,8 +15,6 @@ def overAllFunction():
             self.master = master
             self.master.geometry('800x600')
             self.master.title('VISI Security')
-            self.master.iconbitmap('../img/icon.ico')
-            self.master.wm_iconbitmap('../img/icon.ico')
             self.create_widgets()
 
         def create_widgets(self):
@@ -25,7 +23,6 @@ def overAllFunction():
             self.left_frame.pack(side='left', fill='both', expand=False, padx=10, pady=10)
             self.scrollbar = customtkinter.CTkScrollbar(self.left_frame)
             self.scrollbar.pack(side='right', fill='y')
-            self.menu = ttk.Treeview(self.left_frame, yscrollcommand=self.scrollbar.set, style='Custom.Treeview')
             self.menu.pack(side='left', fill='both', expand=False)
             self.scrollbar.configure(command=self.menu.yview)
 
