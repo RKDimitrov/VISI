@@ -38,6 +38,7 @@ class MyGUI:
         #mapping dictionary to treeview
         for key, value in forUpdate.items():
             self.menu.insert('', 'end', text=key, values=value)
+            
         
         #selected option to content box
         self.menu.bind('<<TreeviewSelect>>', self.update_content)
