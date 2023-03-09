@@ -1,7 +1,6 @@
 import tkinter as tk
-import webbrowser
+import subprocess
 from PIL import Image, ImageTk, ImageEnhance
-import os
 
 class App:
     def __init__(self, master):
@@ -56,7 +55,7 @@ class App:
             self.is_idle = True
 
     def callback(self, event):
-        webbrowser.open("http://www.example.com")
+        #subprocess.run(["python", "notification.py"])
         self.master.destroy()
 
 root = tk.Tk()
