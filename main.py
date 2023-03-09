@@ -1,7 +1,8 @@
 import pickle
-import updater
-import interface
-import notification
+from modules import updater
+from modules import notification
+from modules import interface
+from modules import rooster
 
 AppsToUpdates = updater.AppsToUpdates
 
