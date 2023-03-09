@@ -46,7 +46,7 @@ def overAllFunction():
             self.content_box.pack(side='right', fill='both', expand=True)
 
             # Add widgets to content box
-            self.title_label = tk.Label(self.content_box, text='Welcome to my GUI', font=('Segoe UI', 20, 'bold'), bg='#ECECEC', fg='#1B1B1B', anchor='center')
+            self.title_label = tk.Label(self.content_box, text='Welcome to VISI', font=('Segoe UI', 20, 'bold'), bg='#ECECEC', fg='#1B1B1B', anchor='center')
             self.title_label.pack(padx=10, pady=10)
             self.subtitle_label = tk.Label(self.content_box, text='Select an option from the menu on the left to get started.', font=('Segoe UI', 14), bg='#ECECEC', fg='#1B1B1B', wraplength=500, anchor='center')
             self.subtitle_label.pack(padx=10, pady=10)

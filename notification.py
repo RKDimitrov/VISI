@@ -10,10 +10,10 @@ def on_notification_clicked(notification):
 
 notification = Notification(
     app_id="VISI",
-    title="NEW UPDATE AVAILABLE",
+    title="New Update Available",
     msg=APPSTOUPDATE
 )
 
-notification.add_actions(label="GO APP", launch=f"{os.getcwd()}\interface.py")
+notification.add_actions(label="Open App", launch=f"{os.getcwd()}\interface.py")
 
 notification.show()
