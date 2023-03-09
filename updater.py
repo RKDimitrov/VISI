@@ -9,7 +9,7 @@ def windows_update():
 
     windows_update= soup.find('a', {'data-bi-slot': '3'}).text
 
-    return windows_update
+    return windows_update, url
 
 def vs_code_update():
     url = 'https://code.visualstudio.com/updates'

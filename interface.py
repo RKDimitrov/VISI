@@ -2,8 +2,8 @@ import tkinter as tk
 from tkinter import ttk
 import updater
 
+delition = 0
 AppsToUpdates = updater.AppsToUpdates
-
 forUpdate = {
     "Windows 10 Update": "{}".format(AppsToUpdates["Windows 10"]),
     "linux": "mqu2",
@@ -52,15 +52,15 @@ def overAllFunction():
             self.title_label.pack(padx=10, pady=10)
             self.subtitle_label = tk.Label(self.content_box, text='Select an option from the menu on the left to get started.', font=('Segoe UI', 14), bg='#ECECEC', fg='#1B1B1B', wraplength=500, anchor='center')
             self.subtitle_label.pack(padx=10, pady=10)
-
+            
             # Define custom style for Treeview
             style = ttk.Style()
             style.theme_use('clam')
             style.configure('Custom.Treeview', background='#1B1B1B', fieldbackground='#1B1B1B', foreground='#ECECEC', rowheight=70, font=('Segoe UI', 14))
             style.map('Custom.Treeview', background=[('selected', '#0078D7')], foreground=[('selected', '#ECECEC')])
 
-
         def update_content(self, event):
+            
             # Get selected item
             selected_item = self.menu.selection()
             # Get selected item text
@@ -70,7 +70,21 @@ def overAllFunction():
             # Update content box
             self.title_label.config(text=selected_text)
             self.subtitle_label.config(text=selected_value)
+            #create button to website
+            self.button = tk.Button(self.content_box, text='Go to website', command=lambda: self.open_website(updater.windows_update()[1]))
+            self.button.pack(padx=10, pady=10)
+            #delete button
+            if delition > 0:
+                self.button.destroy()
+            delition+=1
+            print(delition)
             
+    
+
+            
+        def open_website(self, url):
+            import webbrowser
+            webbrowser.open(url)
 
     if __name__ == '__main__':
         root = tk.Tk()
