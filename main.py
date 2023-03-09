@@ -9,6 +9,7 @@ def popup():
     Theres a new update for:
         *Windows 10 - {AppsToUpdates["Windows 10"]}
         *VS-Code - {AppsToUpdates["VS-Code"]}
+        *Chrome - {AppsToUpdates["Chrome"]}
         
     """)
     pass
