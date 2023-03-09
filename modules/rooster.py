@@ -5,7 +5,7 @@ from PIL import Image, ImageTk, ImageEnhance
 class App:
     def __init__(self, master):
         self.master = master
-        self.master.geometry("+{}+{}".format(self.master.winfo_screenwidth(), self.master.winfo_screenheight()))
+        self.master.geometry("+{}+{}".format(self.master.winfo_screenwidth(), self.master.winfo_screenheight()-100))
         self.master.overrideredirect(True)
         self.master.lift()
         self.master.wm_attributes("-topmost", True)
@@ -55,7 +55,7 @@ class App:
             self.is_idle = True
 
     def callback(self, event):
-        subprocess.run(["python", "notification.py"])
+        #subprocess.run(["python", "notification.py"])
         self.master.destroy()
 
 root = tk.Tk()

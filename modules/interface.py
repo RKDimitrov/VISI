@@ -15,6 +15,7 @@ def overAllFunction():
             self.master = master
             self.master.geometry('800x600')
             self.master.title('VISI Security')
+            self.master.iconbitmap('../img/icon.ico')
             self.create_widgets()
 
         def create_widgets(self):
