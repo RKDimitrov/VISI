@@ -13,20 +13,24 @@ def windows_update():
 
     return windows_update
 
-#def vs_code_update():
-    url = 'https://code.visualstudio.com/updates/v1_56'
+def vs_code_update():
+    url = 'https://code.visualstudio.com/updates'
     response = requests.get(url)
 
     # Parse the HTML content using BeautifulSoup
     soup = BeautifulSoup(response.content, 'html.parser')
 
-    vs_code_update = soup.find('h1', id='col-sm-9 col-md-8 body').text
+    active_li = soup.findAll('li', {'class':'active'})
 
-    return vs_code_update
+    a_active = active_li[1].find('a')
+    href_value = a_active.get('href')
+
+
+    return href_value
 
 
 AppsToUpdates = {
     "Windows 10": "{}".format(windows_update()),
-    #"VS-Code": "{}".format(vs_code_update()),
+    "VS-Code": "https://code.visualstudio.com{}".format(vs_code_update()),
     "Chrome": "https://chromereleases.googleblog.com/2021/02/stable-channel-update-for-desktop_23.html",
 }
