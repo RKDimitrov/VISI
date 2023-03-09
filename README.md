@@ -1,2 +1,2 @@
 # VISI
-Your personal pet.
+Your personal security pet.
