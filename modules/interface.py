@@ -24,7 +24,6 @@ def overAllFunction():
 
             self.scrollbar = customtkinter.CTkScrollbar(self.left_frame)
             self.scrollbar.pack(side='right', fill='y')
-            self.menu = ttk.Treeview(self.left_frame, yscrollcommand=self.scrollbar.set, style='Custom.Treeview')
             self.menu.pack(side='left', fill='both', expand=False)
             self.scrollbar.configure(command=self.menu.yview)
             self.menu.heading('#0', text='MENU', anchor='center')

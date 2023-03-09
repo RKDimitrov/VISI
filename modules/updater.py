@@ -17,6 +17,15 @@ def windows_update():
 
     return windows_update, url
 
+def ubuntu_update():
+    #url = 'https://ubuntu.com/download/desktop/thank-you?version='
+    #response = requests.get(url)
+    #soup = BeautifulSoup(response.content, 'html.parser')
+    #current_version = soup.find('a', {'data-bi-slot': '3'}).text
+
+    #return current_version, url
+    print("Ubuntu update")
+
 def vs_code_update():
     url = 'https://code.visualstudio.com/updates'
     response = requests.get(url)
@@ -35,10 +44,10 @@ def vs_code_update():
 AppsToUpdates = {
     "Windows 10": "{}".format(windows_update()),
     "VS-Code": "https://code.visualstudio.com{}".format(vs_code_update()),
-    "Chrome": "https://chromereleases.googleblog.com/2021/02/stable-channel-update-for-desktop_23.html",
+    "Ubuntu": "{}".format(ubuntu_update()),
 }
 
 url_values = {
     "1": windows_update()[1],
-    "2": vs_code_update()[1]
+    "2": vs_code_update()[1],
 }
