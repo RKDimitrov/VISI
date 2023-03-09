@@ -15,18 +15,7 @@ def windows_update():
     current_version = soup.find('a', {'data-bi-slot': '3'}).text
     print("Current version:", current_version)
 
-    while True:
-        time.sleep(cron.get_next()-time.time())
-
-        response = requests.get(url)
-        soup = BeautifulSoup(response.content, 'html.parser')
-        latest_version = soup.find('span', {'data-bi-slot': '3'}).text
-
-        if latest_version != current_version:
-            print("New version available:", latest_version)
-            current_version = latest_version
-
-        return latest_version
+    return windows_update, url
 
 def vs_code_update():
     url = 'https://code.visualstudio.com/updates'
