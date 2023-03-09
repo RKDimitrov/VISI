@@ -27,6 +27,11 @@ class MyGUI:
         self.menu.pack(side='left', fill='both', expand=True)
         self.scrollbar.config(command=self.menu.yview)
 
+        #creating content box
+        self.content_box = tk.Frame(self.master, bg='#ECECEC', padx=20, pady=20)
+        self.content_box.pack(side='right', fill='both', expand=True)
+        
+
         #mapping dictionary to treeview
         for key, value in forUpdate.items():
             self.menu.insert('', 'end', text=key, values=value)
