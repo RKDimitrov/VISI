@@ -14,6 +14,7 @@ def overAllFunction():
         def __init__(self, master):
             self.master = master
             self.master.geometry('800x600')
+            self.master.iconbitmap('../VISI/img/icon.ico')
             self.master.title('VISI Security')
 
 
