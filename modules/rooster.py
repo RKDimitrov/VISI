@@ -38,7 +38,7 @@ class App:
         # self.interface_process = subprocess.Popen(['python', 'interface.py'], startupinfo=subprocess.STARTUPINFO(wShowWindow=False))
 
         updater_threads = []
-        for script_name in ["windowsUpToDate.py", "VS-CodeUpToDater.py", "ubuntuUpToDater.py"]:
+        for script_name in ["windowsUpToDate.py", "VSCodeUpToDater.py", "ubuntuUpToDater.py"]:
             thread = threading.Thread(target=self.run_updater_script, args=(script_name,))
             thread.daemon = True
             updater_threads.append(thread)

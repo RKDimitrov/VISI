@@ -24,9 +24,9 @@ def get_latest_ubuntu_version():
         latest_version = match.group(1)
 
         if (get_installed_ubuntu_version() == latest_version):
-            return f'Ubuntu is up to date. Installed version is {latest_version}.'
+            return (f'Ubuntu is up to date. Installed version is {latest_version}.', True)
         else:
-            return f'Ubuntu is not up to date. Installed version is {get_installed_ubuntu_version()}. Latest version is {latest_version}.'
+            return (f'Ubuntu is not up to date. Installed version is {get_installed_ubuntu_version()}. Latest version is {latest_version}.', False)
     else:
         return None
 
