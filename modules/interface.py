@@ -2,6 +2,10 @@ import customtkinter as CTk
 import updater
 import app_finder
 
+import windowsUpToDate
+import ubuntuUpToDater
+import VSCodeUpToDater
+
 
 AppsToUpdates = updater.AppsToUpdates
 
@@ -12,14 +16,14 @@ forUpdate = {
     "Code": "{}".format(AppsToUpdates["VS-Code"]),
 }
 
+
 def overAllFunction():
     class MyGUI:
         def __init__(self, master):
             self.master = master
-            self.master.geometry('850x600')
+            self.master.geometry('1280x720')
             self.master.iconbitmap('../VISI/img/icon.ico')
             self.master.title('VISI Security')
-            #self.master.widthdraw()
 
             # Creating a menu with scrollbar
             self.menu = CTk.CTkFrame(self.master)
@@ -63,7 +67,6 @@ def overAllFunction():
                 elif app_finder.Os_type() == 3:
                     if None != app_finder.search_file_on_mac(str(key)+".out"):
                         checker = 1
-                print(checker)
                 if checker == 1:
                     option = CTk.CTkButton(master=self.menu_options, text=key, font=('Segoe UI', 14))
                     option.configure(fg_color="transparent", anchor='center')
@@ -81,6 +84,15 @@ def overAllFunction():
             self.title_label.pack(padx=10, pady=10)
             self.subtitle_label = CTk.CTkLabel(self.content_box, text='Select an option from the menu on the left to get started.', font=('Segoe UI', 14), wraplength=500, anchor='center')
             self.subtitle_label.pack(padx=10, pady=10)
+
+            self.text1 = CTk.CTkLabel(self.content_box, text=windowsUpToDate.check_windows_update(), font=('Segoe UI', 20, 'bold'), anchor='center')
+            self.text1.pack(padx=10, pady=10)
+
+            self.text2 = CTk.CTkLabel(self.content_box, text=ubuntuUpToDater.get_latest_ubuntu_version(), font=('Segoe UI', 20, 'bold'), anchor='center')
+            self.text2.pack(padx=10, pady=10)
+
+            self.text3 = CTk.CTkLabel(self.content_box, text=VSCodeUpToDater.check_vscode_version()[0], font=('Segoe UI', 20, 'bold'), anchor='center')
+            self.text3.pack(padx=10, pady=10)
            
 
         def update_content(self, title, text):

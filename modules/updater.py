@@ -24,7 +24,8 @@ def ubuntu_update():
     #current_version = soup.find('a', {'data-bi-slot': '3'}).text
 
     #return current_version, url
-    print("Ubuntu update")
+    #print("Ubuntu update")
+    pass
 
 def vs_code_update():
     url = 'https://code.visualstudio.com/updates'
