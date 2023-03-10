@@ -10,9 +10,9 @@ def check_windows_update():
 
     # Check if there are any available updates
     if search_result.Updates.Count == 0:
-        return ('Your Windows operating system is up to date.', True)
+        return ('Your Windows operating system is up to date.', False)
     else:
         updates = [update.Title for update in search_result.Updates]
         update_list = '\n- '.join(updates)
-        return (f'There are {search_result.Updates.Count} available updates:\n- {update_list}', False)
+        return (f'There are {search_result.Updates.Count} available updates:\n- {update_list}', True)
 

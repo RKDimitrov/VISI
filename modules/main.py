@@ -1,10 +1,16 @@
+import os
+import tkinter as tk
+import customtkinter as CTk
+import subprocess
+import threading
+import win32com.client
+from PIL import Image, ImageTk, ImageEnhance
+
+# Modules
 import pickle
 import updater
 import interface
 import rooster
-
-AppsToUpdates = updater.AppsToUpdates
-
 
     # Load the apps to update
 with open("updater.py", "rb") as f:
