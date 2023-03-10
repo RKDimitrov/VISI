@@ -56,7 +56,7 @@ class App:
 
     def callback(self, event):
         self.master.destroy()
-        subprocess.run(["python", "interface.py"])
+       # subprocess.run(["python", "interface.py"])
 
 root = tk.Tk()
 app = App(root)
