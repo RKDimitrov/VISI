@@ -15,16 +15,18 @@ def windows_update():
     current_version = soup.find('a', {'data-bi-slot': '3'}).text
     print("Current version:", current_version)
 
+
     return windows_update, url
 
 def ubuntu_update():
+    pass
     #url = 'https://ubuntu.com/download/desktop/thank-you?version='
     #response = requests.get(url)
     #soup = BeautifulSoup(response.content, 'html.parser')
     #current_version = soup.find('a', {'data-bi-slot': '3'}).text
 
     #return current_version, url
-    print("Ubuntu update")
+    #print("Ubuntu update")
 
 def vs_code_update():
     url = 'https://code.visualstudio.com/updates'
