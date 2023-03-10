@@ -13,7 +13,7 @@ def windows_update():
     soup = BeautifulSoup(response.content, 'html.parser')
 
     current_version = soup.find('a', {'data-bi-slot': '3'}).text
-    print("Current version:", current_version)
+    
 
     return windows_update, url
 

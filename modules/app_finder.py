@@ -3,7 +3,6 @@ import os
 import platform
 import time
 
-print(platform.system())
 
 def search_file_on_windows(filename):
     for root, dirs, files in os.walk("C:\\"):
