@@ -4,10 +4,11 @@ import app_finder
 
 
 AppsToUpdates = updater.AppsToUpdates
-forOS = {
-    "Windows 10": "{}".format(AppsToUpdates["Windows 10"]),
-}
+
 forUpdate = {
+    "Windows 10": "{}".format(AppsToUpdates["Windows 10"]),
+    "Ubuntu": "UBUNTU",
+    "MacOS": "MAC",
     "Code": "{}".format(AppsToUpdates["VS-Code"]),
 }
 
@@ -31,25 +32,25 @@ def overAllFunction():
             self.menu_options.pack(side='left', fill='both', expand=False)
 
             if app_finder.Os_type() == 1:
-                    option = CTk.CTkButton(master=self.menu_options, text=list(forOS.keys())[0], font=('Segoe UI', 14))
+                    option = CTk.CTkButton(master=self.menu_options, text=list(forUpdate.keys())[0], font=('Segoe UI', 14))
                     option.configure(fg_color="transparent", anchor='center')
                     option.configure(width=int(self.menu_options.cget('width'))-10)
-                    option.configure(command=lambda key=list(forOS.keys())[0], value=list(forOS.values())[0]: self.update_content(key, value))
+                    option.configure(command=lambda key=list(forUpdate.keys())[0], value=list(forUpdate.values())[0]: self.update_content(key, value))
                     option.pack(padx=5, pady=3)
             elif app_finder.Os_type() == 2:
-                    option = CTk.CTkButton(master=self.menu_options, text=list(forOS.keys())[1], font=('Segoe UI', 14))
+                    option = CTk.CTkButton(master=self.menu_options, text=list(forUpdate.keys())[1], font=('Segoe UI', 14))
                     option.configure(fg_color="transparent", anchor='center')
                     option.configure(width=int(self.menu_options.cget('width'))-10)
-                    option.configure(command=lambda key=list(forOS.keys())[1], value=list(forOS.values())[1]: self.update_content(key, value))
+                    option.configure(command=lambda key=list(forUpdate.keys())[1], value=list(forUpdate.values())[1]: self.update_content(key, value))
                     option.pack(padx=5, pady=3)
             elif app_finder.Os_type() == 3:
-                    option = CTk.CTkButton(master=self.menu_options, text=list(forOS.keys())[2], font=('Segoe UI', 14))
+                    option = CTk.CTkButton(master=self.menu_options, text=list(forUpdate.keys())[2], font=('Segoe UI', 14))
                     option.configure(fg_color="transparent", anchor='center')
                     option.configure(width=int(self.menu_options.cget('width'))-10)
-                    option.configure(command=lambda key=list(forOS.keys())[2], value=list(forOS.values())[2]: self.update_content(key, value))
+                    option.configure(command=lambda key=list(forUpdate.keys())[2], value=list(forUpdate.values())[2]: self.update_content(key, value))
                     option.pack(padx=5, pady=3) 
 
-            for key, value in forUpdate.items():
+            for key, value in list(forUpdate.items())[3:]:
                 checker = 0
                 if app_finder.Os_type() == 1:
                     if None != app_finder.search_file_on_windows(str(key)+".exe"):
@@ -62,6 +63,7 @@ def overAllFunction():
                 elif app_finder.Os_type() == 3:
                     if None != app_finder.search_file_on_mac(str(key)+".out"):
                         checker = 1
+                print(checker)
                 if checker == 1:
                     option = CTk.CTkButton(master=self.menu_options, text=key, font=('Segoe UI', 14))
                     option.configure(fg_color="transparent", anchor='center')
