@@ -24,7 +24,7 @@ def overAllFunction():
             CTk.set_appearance_mode("dark")
             self.master = master
             self.master.geometry('1280x720')
-            self.master.iconbitmap('../img/icon.ico')
+            self.master.iconbitmap('../VISI/img/icon.ico')
             self.master.title('VISI Security')
 
             # Creating a menu with scrollbar
@@ -74,13 +74,13 @@ def overAllFunction():
                     if key == "Code":
                          key = "VS Code"
                     option = CTk.CTkButton(master=self.menu_options, text=key, font=('Segoe UI', 18))
+                    if key == "VS Code":
+                        key = "Code"
                     option.configure(fg_color="transparent", anchor='center')
                     option.configure(width=int(self.menu_options.cget('width'))-10)
                     option.configure(command=lambda key=key, value=value: self.update_content(key, value))
                     option.pack(padx=5, pady=3)
-                    if key == "VS Code":
-                        key = "Code"
-
+                    
 
             #creating content box
             self.content_box = CTk.CTkFrame(self.master)
@@ -137,4 +137,3 @@ def overAllFunction():
 
 
 overAllFunction()
-
