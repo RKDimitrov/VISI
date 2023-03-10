@@ -15,8 +15,8 @@ def overAllFunction():
             self.master = master
             self.master.geometry('850x600')
             self.master.iconbitmap('../VISI/img/icon.ico')
-            
             self.master.title('VISI Security')
+            #self.master.widthdraw()
 
             # Creating a menu with scrollbar
             self.menu = CTk.CTkFrame(self.master)
