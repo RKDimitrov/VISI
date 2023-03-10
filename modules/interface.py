@@ -24,7 +24,7 @@ def overAllFunction():
             CTk.set_appearance_mode("dark")
             self.master = master
             self.master.geometry('1280x720')
-            self.master.iconbitmap('../VISI/img/icon.ico')
+            self.master.iconbitmap('../img/icon.ico')
             self.master.title('VISI Security')
 
             # Creating a menu with scrollbar

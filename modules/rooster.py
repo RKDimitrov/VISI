@@ -68,8 +68,9 @@ class App:
             self.is_idle = True
 
     def callback(self, event):
-        #os.startfile("python ./interface.py")
         self.master.destroy()
+        subprocess.run(["python", "interface.py"])
+        
 
 root = tk.Tk()
 app = App(root)
