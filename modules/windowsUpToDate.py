@@ -14,5 +14,5 @@ def check_windows_update():
     else:
         updates = [update.Title for update in search_result.Updates]
         update_list = '\n- '.join(updates)
-        return f'There are {search_result.Updates.Count} available updates:\n- {update_list}'
+        return f'There are {search_result.Updates.Count} available Windows updates:\n- {update_list}'
 
