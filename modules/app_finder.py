@@ -1,13 +1,14 @@
-import platform
+import win32com.client
 
-# Get the Windows version
-windows_version = platform.win32_ver()
+# Initialize the Windows Update Agent API
+wua = win32com.client.Dispatch("Microsoft.Update.Session")
 
-# Print the version information
-print(windows_version)
+# Search for available updates
+searcher = wua.CreateUpdateSearcher()
+searcher.Online = True
+result = searcher.Search("IsInstalled=0")
 
-# Check if the version is up to date
-if "10.0" in windows_version[0]:
-    print("Your version of Windows 10 is up to date.")
+if result.Updates.Count > 0:
+    print("There are updates available.")
 else:
-    print("Your version of Windows is not supported.")
+    print("Your system is up to date.")
