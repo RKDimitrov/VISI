@@ -2,6 +2,7 @@ import tkinter as tk
 import subprocess
 import threading
 from PIL import Image, ImageTk, ImageEnhance
+import os
 
 class App:
     def __init__(self, master):
@@ -67,7 +68,7 @@ class App:
             self.is_idle = True
 
     def callback(self, event):
-        #self.show_interface()
+        #os.startfile("python ./interface.py")
         self.master.destroy()
 
 root = tk.Tk()
