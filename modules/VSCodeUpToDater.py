@@ -27,6 +27,6 @@ def check_vscode_version():
 
     # Compare the two versions and determine if the installed version is up to date
     if installed_version == latest_version:
-        return ('Visual Studio Code is up to date.', True)
+        return ('Visual Studio Code is up to date.', False)
     else:
-        return (f'Visual Studio Code is not up to date. Installed version is {installed_version}. Latest version is {latest_version}.', False)
+        return (f'Visual Studio Code is not up to date. Installed version is {installed_version}. Latest version is {latest_version}.', True)
