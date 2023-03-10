@@ -106,7 +106,7 @@ def overAllFunction():
 
             if hasattr(self, 'button'):
                 self.button.pack_forget()
-            self.button = CTk.CTkButton(self.content_box, text='Go to website', command=lambda: self.open_website(updater.url_values[str(selected_index)]))
+            self.button = CTk.CTkButton(self.content_box, text='Update', command=lambda: self.open_website(updater.url_values[str(selected_index)]))
             self.button.pack(padx=10, pady=10)
            
            
