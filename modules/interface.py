@@ -5,7 +5,6 @@ import app_finder
 import windowsUpToDate
 import ubuntuUpToDater
 import VSCodeUpToDater
-import loader
 
 
 AppsToUpdates = updater.AppsToUpdates
@@ -95,7 +94,7 @@ def overAllFunction():
 
 
             #TEXTS FROM FUNCTIONS
-            self.text1 = CTk.CTkLabel(self.content_box, text=windowsUpToDate.check_windows_update(), font=('Segoe UI', 20, 'bold'), anchor='center')
+            self.text1 = CTk.CTkLabel(self.content_box, text=windowsUpToDate.check_windows_update()[0], font=('Segoe UI', 20, 'bold'), anchor='center')
             self.text1.pack(padx=10, pady=15)
 
             if ubuntuUpToDater.get_installed_ubuntu_version() != None:
