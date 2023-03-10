@@ -5,6 +5,7 @@ import app_finder
 import windowsUpToDate
 import ubuntuUpToDater
 import VSCodeUpToDater
+import loader
 
 
 AppsToUpdates = updater.AppsToUpdates
@@ -18,6 +19,7 @@ forUpdate = {
 
 
 def overAllFunction():
+    
     class MyGUI:
         def __init__(self, master=CTk.CTk()):
             CTk.set_appearance_mode("dark")
@@ -91,6 +93,8 @@ def overAllFunction():
             self.subtitle_label = CTk.CTkLabel(self.content_box, text='Select an option from the menu on the left to get started.', font=('Segoe UI', 17), wraplength=500, anchor='center')
             self.subtitle_label.pack(padx=10, pady=15)
 
+
+            #TEXTS FROM FUNCTIONS
             self.text1 = CTk.CTkLabel(self.content_box, text=windowsUpToDate.check_windows_update(), font=('Segoe UI', 20, 'bold'), anchor='center')
             self.text1.pack(padx=10, pady=15)
 
@@ -103,11 +107,18 @@ def overAllFunction():
            
 
         def update_content(self, title, text):
+            #removing text from previous function
+            if hasattr(self, 'text1'):
+                self.text1.pack_forget()
+            if hasattr(self, 'text2'):
+                self.text2.pack_forget()
+            if hasattr(self, 'text3'):
+                self.text3.pack_forget()
+
             self.title_label.configure(text=title)
             self.subtitle_label.configure(text=text)
             
             selected_index = list(forUpdate.keys()).index(title)
-            
             
             if hasattr(self, 'button'):
                 self.button.pack_forget()
@@ -124,6 +135,7 @@ def overAllFunction():
         
         app = MyGUI()
         app.master.mainloop()
+
 
 overAllFunction()
 
