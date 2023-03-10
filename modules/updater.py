@@ -48,6 +48,6 @@ AppsToUpdates = {
 }
 
 url_values = {
-    "1": windows_update()[1],
-    "2": vs_code_update()[1],
+    "0": windows_update()[1],
+    "1": vs_code_update()[1],
 }
