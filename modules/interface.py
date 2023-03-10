@@ -8,7 +8,6 @@ forOS = {
     "Windows 10": "{}".format(AppsToUpdates["Windows 10"]),
 }
 forUpdate = {
-    "Code": "{}".format(AppsToUpdates["VS-Code"]),
 }
 
 def overAllFunction():
