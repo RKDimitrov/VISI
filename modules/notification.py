@@ -1,5 +1,5 @@
 from winotify import Notification
-import interface
+
 import os, sys
 from updater import AppsToUpdates
 

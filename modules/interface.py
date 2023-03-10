@@ -14,10 +14,11 @@ forUpdate = {
 
 def overAllFunction():
     class MyGUI:
-        def __init__(self, master):
+        def __init__(self, master=CTk.CTk()):
+            CTk.set_appearance_mode("dark")
             self.master = master
             self.master.geometry('850x600')
-            self.master.iconbitmap('../VISI/img/icon.ico')
+            self.master.iconbitmap('../img/icon.ico')
             self.master.title('VISI Security')
             #self.master.widthdraw()
 
@@ -102,10 +103,9 @@ def overAllFunction():
             webbrowser.open(url)
 
     if __name__ == '__main__':
-        CTk.set_appearance_mode("dark")
-        root = CTk.CTk()
-        app = MyGUI(root)
-        root.mainloop()
+        
+        app = MyGUI()
+        app.master.mainloop()
 
 overAllFunction()
 
