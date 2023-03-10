@@ -1,5 +1,6 @@
 import tkinter as tk
 import subprocess
+import threading
 from PIL import Image, ImageTk, ImageEnhance
 
 class App:
@@ -34,7 +35,17 @@ class App:
         self.current_image = 0
         self.is_idle = False
         self.master.after(1000, self.slide_in)
-        self.interface_process = subprocess.Popen(['python', 'interface.py'], startupinfo=subprocess.STARTUPINFO(wShowWindow=False))
+        # self.interface_process = subprocess.Popen(['python', 'interface.py'], startupinfo=subprocess.STARTUPINFO(wShowWindow=False))
+
+        updater_threads = []
+        for script_name in ["windowsUpToDate.py", "VS-CodeUpToDater.py", "ubuntuUpToDater.py"]:
+            thread = threading.Thread(target=self.run_updater_script, args=(script_name,))
+            thread.daemon = True
+            updater_threads.append(thread)
+            thread.start()
+
+    def run_updater_script(self, script_name):
+        subprocess.run(["python", script_name])
 
     def slide_in(self):
         self.master.geometry("{}x{}+{}+{}".format(self.images[0].width(), self.images[0].height(),
@@ -56,7 +67,7 @@ class App:
             self.is_idle = True
 
     def callback(self, event):
-        self.show_interface()
+        #self.show_interface()
         self.master.destroy()
 
 root = tk.Tk()
