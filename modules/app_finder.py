@@ -1,38 +1,40 @@
 import os
 # Get the operating system
+import platform
+import time
+
+print(platform.system())
 
 def search_file_on_windows(filename):
     for root, dirs, files in os.walk("C:\\"):
         if filename in files:
             return os.path.join(root, filename)
     return None
+    
 
-# Example usage
-game_exe_path = search_file_on_windows("hui.exe")
-if game_exe_path is not None:
-    print("Game is installed at:", game_exe_path)
-else:
-    print("Game is not installed.")
+def search_file_on_ubuntu(filename):
+    for root, dirs, files in os.walk("/"):
+        for file in files:
+            if filename in file:
+                return os.path.join(root, file)
+    return None
+    
 
-# Print different messages based on the OS
-import platform
+def search_file_on_mac(filename):
+    for root, dirs, files in os.walk("/"):
+        for file in files:
+            if filename in file:
+                return os.path.join(root, file)
+    return None
 
-# Get the Windows version
-windows_version = platform.win32_ver()
 
-# Print the version information
-print(windows_version)
+def Os_type():
 
-import win32com.client
+    if platform.system() == "Windows": 
+        return 1
+    elif platform.system() == "Linux":
+        return 2
+    elif platform.system() == "Darwin":
+        return 3
 
-# Connect to the Windows Update service
-wu = win32com.client.Dispatch("Microsoft.Update.Session")
 
-# Search for available updates
-search_result = wu.CreateUpdateSearcher().Search("IsInstalled=0")
-
-# Check if any updates are available
-if search_result.Updates.Count == 0:
-    print("Your version of Windows is up to date.")
-else:
-    print("Updates are available for your version of Windows.")
