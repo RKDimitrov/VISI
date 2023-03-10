@@ -1,22 +1,22 @@
 import customtkinter as CTk
-
 import updater
+import app_finder
 
-delition = 0
+
 AppsToUpdates = updater.AppsToUpdates
 forUpdate = {
     "Windows 10 Update": "{}".format(AppsToUpdates["Windows 10"]),
-    "VS code Update": "{}".format(AppsToUpdates["VS-Code"]),
+    "VS Code Update": "{}".format(AppsToUpdates["VS-Code"]),
 }
 
 def overAllFunction():
     class MyGUI:
         def __init__(self, master):
             self.master = master
-            self.master.geometry('800x600')
+            self.master.geometry('850x600')
             self.master.iconbitmap('../VISI/img/icon.ico')
+            
             self.master.title('VISI Security')
-
 
             # Creating a menu with scrollbar
             self.menu = CTk.CTkFrame(self.master)
@@ -39,9 +39,8 @@ def overAllFunction():
             self.content_box = CTk.CTkFrame(self.master)
             self.content_box.pack(padx=20, pady=20, fill='both', expand=True)
 
-
             # Add widgets to content box
-            self.title_label = CTk.CTkLabel(self.content_box, text='Welcome to my GUI', font=('Segoe UI', 20, 'bold'), anchor='center')
+            self.title_label = CTk.CTkLabel(self.content_box, text='Welcome to VISI', font=('Segoe UI', 20, 'bold'), anchor='center')
             self.title_label.pack(padx=10, pady=10)
             self.subtitle_label = CTk.CTkLabel(self.content_box, text='Select an option from the menu on the left to get started.', font=('Segoe UI', 14), wraplength=500, anchor='center')
             self.subtitle_label.pack(padx=10, pady=10)
