@@ -62,7 +62,6 @@ def overAllFunction():
                 elif app_finder.Os_type() == 3:
                     if None != app_finder.search_file_on_mac(str(key)+".out"):
                         checker = 1
-                print(checker)
                 if checker == 1:
                     option = CTk.CTkButton(master=self.menu_options, text=key, font=('Segoe UI', 14))
                     option.configure(fg_color="transparent", anchor='center')
