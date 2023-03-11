@@ -40,13 +40,6 @@ def vs_code_update():
 
     return href_value, url
 
-
-AppsToUpdates = {
-    "Windows 10": "{}".format(windows_update()),
-    "VS-Code": "https://code.visualstudio.com{}".format(vs_code_update()),
-    "Ubuntu": "{}".format(ubuntu_update()),
-}
-
 url_values = {
     "0": windows_update()[1],
     "3": vs_code_update()[1],

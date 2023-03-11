@@ -15,7 +15,7 @@ import ubuntuUpToDater
 import rooster
 
 # Global variables
-update_time = 18000 #30 minutes
+update_time = 60 #30 minutes
 
 def updateCheck():
     while True:
@@ -24,10 +24,8 @@ def updateCheck():
         else:
             print("Needs update")
             subprocess.run(["python", "rooster.py"])
-
-        time.sleep(update_time)
-
-
+            time.sleep(update_time)
+        
 def main():
     updateCheck()
         

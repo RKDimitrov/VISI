@@ -1,4 +1,5 @@
 import customtkinter as CTk
+import tkinter as tk
 import updater
 import app_finder
 
@@ -7,24 +8,21 @@ import ubuntuUpToDater
 import VSCodeUpToDater
 
 
-AppsToUpdates = updater.AppsToUpdates
-
 forUpdate = {
-    "Windows 10": "{}".format(AppsToUpdates["Windows 10"]),
+    "Windows 10": "{}".format(updater.windows_update()),
     "Ubuntu": "UBUNTU",
     "MacOS": "MAC",
-    "Code": "{}".format(AppsToUpdates["VS-Code"]),
+    "Code": "{}".format(updater.vs_code_update()),
 }
 
 
 def overAllFunction():
-    
     class MyGUI:
         def __init__(self, master=CTk.CTk()):
             CTk.set_appearance_mode("dark")
             self.master = master
             self.master.geometry('1280x720')
-            self.master.iconbitmap('../VISI/img/icon.ico')
+            self.master.iconbitmap('../img/icon.ico')
             self.master.title('VISI Security')
 
             # Creating a menu with scrollbar
@@ -56,6 +54,10 @@ def overAllFunction():
                     option.configure(width=int(self.menu_options.cget('width'))-10)
                     option.configure(command=lambda key=list(forUpdate.keys())[2], value=list(forUpdate.values())[2]: self.update_content(key, value))
                     option.pack(padx=5, pady=3) 
+
+            if VSCodeUpToDater.check_vscode_version()[1] == False:
+                forUpdate.pop('Code')
+                print(forUpdate)        
 
             for key, value in list(forUpdate.items())[3:]:
                 checker = 0
@@ -92,7 +94,8 @@ def overAllFunction():
             self.subtitle_label = CTk.CTkLabel(self.content_box, text='Select an option from the menu on the left to get started.', font=('Segoe UI', 17), wraplength=500, anchor='center')
             self.subtitle_label.pack(padx=10, pady=15)
 
-
+            if windowsUpToDate.check_windows_update()[1] == True:
+                 should_update = True
             #TEXTS FROM FUNCTIONS
             self.text1 = CTk.CTkLabel(self.content_box, text=windowsUpToDate.check_windows_update()[0], font=('Segoe UI', 20, 'bold'), anchor='center')
             self.text1.pack(padx=10, pady=15)
@@ -100,15 +103,17 @@ def overAllFunction():
             if ubuntuUpToDater.get_installed_ubuntu_version() != None:
                 self.text2 = CTk.CTkLabel(self.content_box, text=ubuntuUpToDater.get_latest_ubuntu_version(), font=('Segoe UI', 20, 'bold'), anchor='center')
                 self.text2.pack(padx=10, pady=15)
-
+            
+            #VSCODE
             self.text3 = CTk.CTkLabel(self.content_box, text=VSCodeUpToDater.check_vscode_version()[0], font=('Segoe UI', 20, 'bold'), anchor='center')
             self.text3.pack(padx=10, pady=15)
+
            
 
         def update_content(self, title, text):
             #removing text from previous function
             if hasattr(self, 'text1'):
-                self.text1.pack_forget()
+                pass#self.text1.pack_forget()
             if hasattr(self, 'text2'):
                 self.text2.pack_forget()
             if hasattr(self, 'text3'):
