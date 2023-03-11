@@ -118,8 +118,11 @@ def overAllFunction():
                 self.text2.pack_forget()
             if hasattr(self, 'text3'):
                 self.text3.pack_forget()
-
+            if title == "Code":
+                title = "VS Code"
             self.title_label.configure(text=title)
+            if title == "VS Code":
+                title = "Code"
             self.subtitle_label.configure(text=text)
             
             selected_index = list(forUpdate.keys()).index(title)
